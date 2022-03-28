@@ -35,7 +35,7 @@ The [automated_sh_generator_spix.py](https://github.com/WilliamRasakanya/Spectra
     ```
  5. Generate the bash submission files
     ```
-    $ python  automated_sh_generator_spix.py idia
+    $ python automated_sh_generator_spix.py idia
     ```
  6. Write or copy the background (noise) region (DS9 format or otherwise{untested}) to the /noise directory
  7. Submit the job:

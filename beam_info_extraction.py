@@ -115,7 +115,7 @@ def main():
 
     # Identify the image file with the aformentioned larger BMIN, BMAJ, BPA
     if minor_index == major_index:
-        print("image", imagefiles[minor_index], "will be used as a reference,")
+        print("image ", imagefiles[minor_index], " will be used as a reference,")
         print("and all other images will be smoothed to its beam size")
     else:
         print("Error. The indices do not match. Inspect all files header info")

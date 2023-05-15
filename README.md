@@ -2,7 +2,7 @@ Created by William Rasakanya. An MSc Astrophysics student.
 
 ---
 
-## Spectral_imaging_auto
+## Spectral_index_imaging_auto
 A few python3 scripts to use in making spectral index images using radio image maps.
 
 The [automated_sh_generator_spix.py](https://github.com/WilliamRasakanya/Spectral_imaging_auto/blob/main/automated_sh_generator_spix.py) will generate three bash files which contain the required computing power inputs:

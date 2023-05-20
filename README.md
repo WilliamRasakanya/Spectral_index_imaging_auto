@@ -1,4 +1,4 @@
-Created by William Rasakanya. An MSc Astrophysics student.
+Created by William Rasakanya. A PhD Astrophysics candidate at the University of the Witwatersrand.
 
 ---
 

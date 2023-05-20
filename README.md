@@ -9,7 +9,9 @@ The [automated_sh_generator_spix.py](https://github.com/WilliamRasakanya/Spectra
   * The "submit_smoothing_job.sh" bash file is the main bash file to be submitted on the terminal
   * The "slurm_astr3.sh" file is linked in the main submission file and it contains the instructions for the image beam info extraction 
   * The "slurm_casasmooth.sh" file will instruct the Common Astronomy Software Applications (CASA) package to smooth the required files to a resolution of an image with the largest beam size
- 
+
+NB: Ensure that all the input images have the same angular sizes and the same sky coordiantes.
+
  ---
  
  ## Quick start

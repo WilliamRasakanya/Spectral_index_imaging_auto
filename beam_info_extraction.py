@@ -12,8 +12,8 @@
 # Import the fits files
 # Using astropy:
     # extract beam info from header info
-    # identify the larger BMIN, BMAJ, BPA
-    # Identify the image file with the aformentioned larger BMIN, BMAJ, BPA
+    # identify the larger BMIN and BMAJ
+    # Identify the image file with the aformentioned larger BMIN and BMAJ, and use its BPA
     # Copy the identified image file to the './data' directory
 # Using CASA:
     # smooth all other images using the selected beam sizes
@@ -102,7 +102,7 @@ def main():
         bpa = header['BPA']
         pa.append(bpa)
     
-    # identify the larger BMIN, BMAJ, BPA
+    # identify the larger BMIN and BMAJ
 
     larger_minor = max(minor)
     minor_index = minor.index(larger_minor)
@@ -110,17 +110,20 @@ def main():
     larger_major = max(major)
     major_index = major.index(larger_major)
 
-    larger_bpa = max(pa)
-    bpa_index = pa.index(larger_bpa)
+    #larger_bpa = max(pa)
+    #bpa_index = pa.index(larger_bpa)
 
-    # Identify the image file with the aformentioned larger BMIN, BMAJ, BPA
+    # Identify the image file with the aformentioned larger BMIN and BMAJ
     if minor_index == major_index:
         print("image ", imagefiles[minor_index], " will be used as a reference,")
         print("and all other images will be smoothed to its beam size")
+        
+        larger_bpa = pa[minor_index] # Use the BPA of the chosen image
+        
     else:
-        print("Error. The indices do not match. Inspect all files header info")
+        print("Error. The indices do not match. Inspect all files' header info")
     
-    # print image filename with larger BMIN, BMAJ, BPA to a file
+    # print image filename with larger BMIN and BMAJ to a file
     
     g = open(TXT + 'exclude_im.txt', 'w')
     g.write(imagefiles[minor_index])
@@ -131,7 +134,7 @@ def main():
     shutil.copy2(imagefiles[minor_index], DATA + imagefiles[minor_index])
 
 
-    # Convert the larger BMIN, BMAJ, BPA value into a string and add 'arcsec' or 'deg' where applicable
+    # Convert the larger BMIN and BMAJ value and its BPA into a string and add 'arcsec' or 'deg' where applicable
 
     larger_minor = str(larger_minor) + 'arcsec'
     larger_major = str(larger_major) + 'arcsec'

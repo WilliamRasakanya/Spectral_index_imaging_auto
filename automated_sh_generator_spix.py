@@ -41,7 +41,7 @@ g.write('\n # Use CASA to smooth the selected images')
 g.write("\n SMOOTH=`sbatch -d afterok:${BamExt} " + cwd + "/slurm_casasmooth.sh | awk '{print $4}' `")
 g.write('\n    ')
 g.write('\n # Use BRATS to create a spectral index map')
-g.write("\n SPImap=`sbatch -d afterok:${SMOOTH} " + cwd + "/slurm_spi.sh | awk '{print $4} `")
+g.write("\n SPImap=`sbatch -d afterok:${SMOOTH} " + cwd + "/slurm_spi.sh | awk '{print $4}' `")
 g.close()
 
 make_executable(submit_file) # From Ian Heywood GitHub

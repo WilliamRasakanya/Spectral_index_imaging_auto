@@ -126,7 +126,7 @@ def main():
     major_index = major.index(larger_major)
 
     # Identify the image file with the aformentioned larger BMIN and BMAJ
-    h = open(LOGS + 'beamext_logs.txt')
+    h = open(LOGS + 'beamext_logs.txt', 'w')
     h.write("# Reference image identification for smoothing purposes. \n \n")
     
     if minor_index == major_index:

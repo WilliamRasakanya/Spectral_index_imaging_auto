@@ -1,14 +1,15 @@
-Created by William Rasakanya. A PhD Astrophysics candidate at the University of the Witwatersrand.
+Created by William Rasakanya. A PhD Astrophysics student at the University of the Witwatersrand.
 
 ---
 
 ## Spectral_index_imaging_auto
-A few python3 scripts to use in making spectral index images using radio image maps.
+A few python3 scripts to use to create spectral index images using radio images.
 
-The [automated_sh_generator_spix.py](https://github.com/WilliamRasakanya/Spectral_imaging_auto/blob/main/automated_sh_generator_spix.py) will generate three bash files which contain the required computing power inputs:
-  * The "submit_smoothing_job.sh" bash file is the main bash file to be submitted on the terminal
-  * The "slurm_astr3.sh" file is linked in the main submission file and it contains the instructions for the image beam info extraction 
-  * The "slurm_casasmooth.sh" file will instruct the Common Astronomy Software Applications (CASA) package to smooth the required files to a resolution of an image with the largest beam size
+The [automated_sh_generator_spix.py](https://github.com/WilliamRasakanya/Spectral_imaging_auto/blob/main/automated_sh_generator_spix.py) will generate four bash files which contain the required computing power inputs:
+  * The "submit_spi_creation_job.sh" bash file is the main bash file to be submitted on the terminal.
+  * The "slurm_beamext.sh" file is linked in the main submission file and it contains the instructions for the image beam info extraction and creates a _physical_ full map region file. 
+  * The "slurm_casasmooth.sh" file will instruct the Common Astronomy Software Applications (CASA) package to smooth the required files to a resolution of an image with the largest beam size.
+  * Finally, the "slurm_spi.sh" file will use the Broadband Radio Astronomy Tools (BRATS) software to create a spectral index map.
 
 NB: Ensure that all the input images have the same angular sizes and the same sky coordiantes.
 
@@ -44,6 +45,15 @@ NB: Ensure that all the input images have the same angular sizes and the same sk
     ``` 
     $ ./submit_smoothing_job.sh
     ```
+ 
+ 
+ ---
+ 
+ ## Containers
+ 
+ 
+ 
+ ---
  
  More info might be added in the future as my skills improve.
  

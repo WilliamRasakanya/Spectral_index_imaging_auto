@@ -92,7 +92,7 @@ make_executable(submit_file_casa)
 submit_file_spi = 'slurm_spi.sh'
 
 g = open(submit_file_spi, 'w')
-g.write('#!/usr/bin/bash', +'\n')
+g.write('#!/usr/bin/bash' +'\n')
 g.write('\n')
 g.write('#SBATCH --job-name=SPImap' + '\n')
 g.write('#SBATCH --time=12:00:00' + '\n')

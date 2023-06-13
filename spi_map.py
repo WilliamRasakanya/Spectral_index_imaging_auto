@@ -19,6 +19,7 @@ from os import path
 cwd = os.getcwd() # current working directory
 
 TXT = cwd + 'txt_files/'
+LOGS = cwd + 'txt_files/'
 
 g = open(TXT + 'spi_commands.txt', 'w')
 g.write('sigma')
@@ -44,6 +45,7 @@ g.write('setregions')
 g.write('0')
 g.write('specindex')
 g.write('0')
+g.close()
 
 #________________________________________________________
 # Use BRATS to run the commands above
@@ -51,10 +53,22 @@ g.write('0')
 
 import brats
 
+h = open(LOGS + 'brats_logs.txt', 'w')
+h.write('Running BRATS. \n')
+h.write('BRATS python logs to appear here. \n \n')
+
 # Bind the BRATS install location
 spi_ = brats.Bind("/usr/bin/brats")
 
 # Run multiple files in series with execfile():
 spi_create = spi_.execfile("txt_files/spi_commands.txt")
-print(spi_create)
+#print(spi_create)
+h.write(f'{spi_}' + '\n') # Returns a dictionary {file : returncode}. Returns 0 on success, else returns an error code.
 
+# Alternatively, to have parallel runs with multiexec():
+# files = ["./command1.txt", "./commands2.txt"] # List of command files
+# runs_ = spi_.multiexec(files, 2) # Syntax: multiexec(list ["files", "to", "process"], int number_of_cores)
+# print(runs_)
+# h.write(f'{runs_}') # Returns a dictionary {commandfilename : returncode}. Returns 0 on success, else returns an error code.
+
+h.close()

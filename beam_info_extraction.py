@@ -151,6 +151,7 @@ def main():
         # Create a region file that covers the whole image
         
         
+        
     
     # print image filename with larger BMIN and BMAJ to a file
     

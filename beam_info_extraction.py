@@ -37,8 +37,8 @@ import shutil
 
 from astropy.io import fits
 from astropy.convolution import Gaussian2DKernel
-from astropy.wcs import WCS
-from astropy.coordinates import SkyCoord
+#from astropy.wcs import WCS
+#from astropy.coordinates import SkyCoord
 from scipy.signal import convolve as scipy_convolve
 from astropy.convolution import convolve
 from radio_beam import Beam, Beams
@@ -93,7 +93,7 @@ def main():
     
     nax1 = []
     nax2 = []
-    wcs = []
+    #wcs = []
 
 
     for image in imagefiles:
@@ -114,8 +114,8 @@ def main():
         naxis2 = header['NAXIS2'] # Get pixel axis 2 length
         nax2.append(naxis2)
         
-        wcs_ = WCS(header) # Extract wcs info 
-        wcs.append(wcs_)
+        #wcs_ = WCS(header) # Extract wcs info 
+        #wcs.append(wcs_)
     
     # identify the larger BMIN and BMAJ
 
@@ -141,17 +141,33 @@ def main():
         print("Error. The indices do not match. Inspect all files' header info")
         h.write("Error. The indices do not match. Inspect all files' header info.")
     
-    h.write('\n \n # Checking if both axes lengths are the same for spec. index map creation. \n \n')
+    h.write('\n \n # Checking if both axes lengths are the same for spectral index map creation. \n \n')
     
     if nax1[minor_index] != nax2[minor_index]:
         h.write("The pixel axes lengths are not the same. \n")
-        h.write("Crop images to a square shape or configure the map region to be a square.")
+        h.write("Consider cropping the image into a square shape. Otherwise, the biggest square with its centre being that of the image will be used. \n")
+        h.write("Creating a square region file that tries to cover most of the image...")
+        # Create a square region file that tries to cover the whole image
+        size_ = min(nax1[minor_index], nax2[minor_index])
+        g = open(TXT + 'full_map.reg')
+        g.write('# Region file format: DS9 version 4.1' + '\n')
+        g.write('global color=green dashlist=8 3 width=1 font="helvetica 10 normal roman" select=1 highlite=1 dash=0 fixed=0 edit=1 move=1 delete=1 include=1 source=1' + '\n')
+        g.write('physical' + '\n')
+        g.write(f'box({(size_ - 1)/2}, {(size_ - 1)/2}, {(size_ - 1)}, {(size_ - 1)}, 0)' + ' # color=#FFFFFF width=2 text={Full_image}') # The last paramenter in the box, the 0, represents the rotation angle. Change as appropriate.
+        g.close()
         
     else:
+        h.write("Pixel axes lengths are the same. \n")
+        h.write("Creating full region map...")
         # Create a region file that covers the whole image
+        g = open(TXT + 'full_map.reg')
+        g.write('# Region file format: DS9 version 4.1' + '\n')
+        g.write('global color=green dashlist=8 3 width=1 font="helvetica 10 normal roman" select=1 highlite=1 dash=0 fixed=0 edit=1 move=1 delete=1 include=1 source=1' + '\n')
+        g.write('physical' + '\n')
+        g.write(f'box({(nax1[minor_index] - 1)/2}, {(nax1[minor_index] - 1)/2}, {(nax1[minor_index] - 1)}, {(nax1[minor_index] - 1)}, 0)' + ' # color=#FFFFFF width=2 text={Full_image}') # The last paramenter in the box, the 0, represents the rotation angle. Change as appropriate.
+        g.close()
         
-        
-        
+    h.close()    
     
     # print image filename with larger BMIN and BMAJ to a file
     

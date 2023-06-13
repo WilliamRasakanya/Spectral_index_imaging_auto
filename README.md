@@ -3,7 +3,7 @@ Created by William Rasakanya. A PhD Astrophysics student at the University of th
 ---
 
 ## Spectral_index_imaging_auto
-A few python3 scripts to use to create spectral index images using radio images.
+A few `Python` scripts to use to create spectral index images using radio images.
 
 The [automated_sh_generator_spix.py](https://github.com/WilliamRasakanya/Spectral_imaging_auto/blob/main/automated_sh_generator_spix.py) will generate four bash files which contain the required computing power inputs:
   * The "submit_spi_creation_job.sh" bash file is the main bash file to be submitted on the terminal.
@@ -11,7 +11,7 @@ The [automated_sh_generator_spix.py](https://github.com/WilliamRasakanya/Spectra
   * The "slurm_casasmooth.sh" file will instruct the Common Astronomy Software Applications (CASA) package to smooth the required files to a resolution of an image with the largest beam size.
   * Finally, the "slurm_spi.sh" file will use the Broadband Radio Astronomy Tools (BRATS) software to create a spectral index map.
 
-NB: Ensure that all the input images have the same angular sizes and the same sky coordiantes.
+NB: Ensure that all the input images have the same angular sizes and the same sky coordiantes, and that are square-shaped.
 
  ---
  
@@ -58,7 +58,7 @@ NB: Ensure that all the input images have the same angular sizes and the same sk
  * [BRATS](http://www.askanastronomer.co.uk/brats/): To create radio spectral index maps.
   * Reference: [Harwood et al., 2013, MNRAS, 435, 3353](http://mnras.oxfordjournals.org/content/435/4/3353); [Harwood et al., 2015, MNRAS, 454, 3403](http://mnras.oxfordjournals.org/content/454/4/3403)
   
- * [bratswrapper](https://github.com/JeremyHarwood/bratswrapper): [@JeremyHarwood](https://github.com/JeremyHarwood)'s Python wrapper which allows for automation of the process. 
+ * [`bratswrapper`](https://github.com/JeremyHarwood/bratswrapper): [@JeremyHarwood](https://github.com/JeremyHarwood)'s `Python` wrapper which allows for automation of the process. 
  
 
  ---

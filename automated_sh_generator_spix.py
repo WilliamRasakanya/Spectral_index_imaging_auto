@@ -8,7 +8,7 @@
 
 
 # Generate a bash file will submit a script that uses python:
-#    to create folders, use astropy to get BMIN, BMAX etc. values
+#    to create folders, use astropy to get BMIN, BMAJ etc. values
 
 import os
 

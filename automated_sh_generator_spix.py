@@ -4,7 +4,7 @@
 # In[ ]:
 
 
-#****************Main file for an automated spectral index map maker***************
+#****************Main file for an automated spectral index map creator***************
 
 
 # Generate a bash file will submit a script that uses python:

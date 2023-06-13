@@ -37,6 +37,8 @@ import shutil
 
 from astropy.io import fits
 from astropy.convolution import Gaussian2DKernel
+from astropy.wcs import WCS
+from astropy.coordinates import SkyCoord
 from scipy.signal import convolve as scipy_convolve
 from astropy.convolution import convolve
 from radio_beam import Beam, Beams
@@ -55,9 +57,9 @@ try:
 except:
     pass
 
-OUTPUT = cwd + '/output/'
+IMAGES = cwd + '/images/'
 try:
-    os.mkdir(OUTPUT)
+    os.mkdir(IMAGES)
 except:
     pass
 
@@ -88,19 +90,32 @@ def main():
     minor = []
     major = []
     pa = []
+    
+    nax1 = []
+    nax2 = []
+    wcs = []
 
 
     for image in imagefiles:
         header = fits.getheader(image)
     
-        bmin = header['BMIN'] * 60*60  #Convert from degrees to arcsec
+        bmin = header['BMIN'] * 60*60  # Convert from degrees to arcsec
         minor.append(bmin)
     
-        bmaj = header['BMAJ'] * 60*60  #Convert from degrees to arcsec
+        bmaj = header['BMAJ'] * 60*60  # Convert from degrees to arcsec
         major.append(bmaj)
     
         bpa = header['BPA']
         pa.append(bpa)
+        
+        naxis1 = header['NAXIS1'] # Get pixel axis 1 length
+        nax1.append(naxis1)
+        
+        naxis2 = header['NAXIS2'] # Get pixel axis 2 length
+        nax2.append(naxis2)
+        
+        wcs_ = WCS(header) # Extract wcs info 
+        wcs.append(wcs_)
     
     # identify the larger BMIN and BMAJ
 
@@ -110,18 +125,32 @@ def main():
     larger_major = max(major)
     major_index = major.index(larger_major)
 
-    #larger_bpa = max(pa)
-    #bpa_index = pa.index(larger_bpa)
-
     # Identify the image file with the aformentioned larger BMIN and BMAJ
+    h = open(LOGS + 'beamext_logs.txt')
+    h.write("# Reference image identification for smoothing purposes. \n \n")
+    
     if minor_index == major_index:
         print("image ", imagefiles[minor_index], " will be used as a reference,")
-        print("and all other images will be smoothed to its beam size")
+        h.write(f"Image {imagefiles[minor_index]} will be used as a reference,")
+        print("and all other images will be smoothed to its beam size.")
+        h.write("and all other images will be smoothed to its beam size. \n")
         
         larger_bpa = pa[minor_index] # Use the BPA of the chosen image
         
     else:
         print("Error. The indices do not match. Inspect all files' header info")
+        h.write("Error. The indices do not match. Inspect all files' header info.")
+    
+    h.write('\n \n # Checking if both axes lengths are the same for spec. index map creation. \n \n')
+    
+    if nax1[minor_index] != nax2[minor_index]:
+        h.write("The pixel axes lengths are not the same. \n")
+        h.write("Crop images to a square shape or configure the map region to be a square.")
+        
+    else:
+        # Create a region file that covers the whole image
+        
+        
     
     # print image filename with larger BMIN and BMAJ to a file
     
@@ -134,7 +163,7 @@ def main():
     shutil.copy2(imagefiles[minor_index], DATA + imagefiles[minor_index])
 
 
-    # Convert the larger BMIN and BMAJ value and its BPA into a string and add 'arcsec' or 'deg' where applicable
+    # Convert the larger BMIN and BMAJ values and its BPA into strings and add 'arcsec' or 'deg' where applicable
 
     larger_minor = str(larger_minor) + 'arcsec'
     larger_major = str(larger_major) + 'arcsec'
@@ -148,6 +177,7 @@ def main():
     f.write(larger_major + '\n')
     f.write(larger_bpa + '\n')
     f.close()
+    
     
     
 if __name__ == "__main__":

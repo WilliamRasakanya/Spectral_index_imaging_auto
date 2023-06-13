@@ -43,7 +43,7 @@ NB: Ensure that all the input images have the same angular sizes and the same sk
  6. Write or copy the background (noise) region (DS9 format or otherwise{untested}) to the /noise directory
  7. Submit the job:
     ``` 
-    $ ./submit_smoothing_job.sh
+    $ ./submit_spi_creation_job.sh
     ```
  
  

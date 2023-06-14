@@ -39,6 +39,7 @@ for image in imagefiles:
             minor = larger_minor,
             pa = larger_bpa,
             targetres=True,
+            overwrite=True,
             outfile = 'smoothed_' + image + '.im')
     
 smoothedfiles = glob.glob('smoothed_*')

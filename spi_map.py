@@ -18,8 +18,8 @@ from os import path
 
 cwd = os.getcwd() # current working directory
 
-TXT = cwd + 'txt_files/'
-LOGS = cwd + 'txt_files/'
+TXT = cwd + '/txt_files/'
+LOGS = cwd + '/txt_files/'
 
 g = open(TXT + 'spi_commands.txt', 'w')
 g.write('sigma')

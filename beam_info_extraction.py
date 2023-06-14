@@ -63,11 +63,11 @@ try:
 except:
     pass
 
-NOISE = cwd + '/noise/'
-try:
-    os.mkdir(NOISE)
-except:
-    pass
+# NOISE = cwd + '/noise/'
+# try:
+#     os.mkdir(NOISE)
+# except:
+#     pass
 
 LOGS = cwd + '/logs/'
 try:

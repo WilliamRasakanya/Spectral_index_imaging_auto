@@ -22,29 +22,29 @@ TXT = cwd + '/txt_files/'
 LOGS = cwd + '/txt_files/'
 
 g = open(TXT + 'spi_commands.txt', 'w')
-g.write('sigma')
-g.write('5')
-g.write('export')
-g.write('exportasfits')
-g.write('imageloc')
-g.write('images')
-g.write('load')
-g.write('data')
-g.write('noise.reg') # noise region
-g.write('txt_files/full_map.reg') # region file path (Default will use the full map)
-g.write('0.0474') # redshift of the source of interest
-g.write('specindexcalctype')
-g.write('2')
-g.write('fluxcalerror')
-g.write('888')
-g.write('888')
-g.write('0.1') # Percentage error to apply, in decimal form
-g.write('onsource')
-g.write('5')
-g.write('setregions')
-g.write('0')
-g.write('specindex')
-g.write('0')
+g.write('sigma' + '\n')
+g.write('5' + '\n')
+g.write('export' + '\n')
+g.write('exportasfits' + '\n')
+g.write('imageloc' + '\n')
+g.write('images' + '\n')
+g.write('load' + '\n')
+g.write('data' + '\n')
+g.write('noise.reg' + '\n') # noise region
+g.write('txt_files/full_map.reg' + '\n') # region file path (Default will use the full map)
+g.write('0.0474' + '\n') # redshift of the source of interest
+g.write('specindexcalctype' + '\n')
+g.write('2' + '\n')
+g.write('fluxcalerror' + '\n')
+g.write('888' + '\n')
+g.write('888' + '\n')
+g.write('0.1' + '\n') # Percentage error to apply, in decimal form
+g.write('onsource' + '\n')
+g.write('5' + '\n')
+g.write('setregions' + '\n')
+g.write('0' + '\n')
+g.write('specindex' + '\n')
+g.write('0' + '\n')
 g.close()
 
 #________________________________________________________

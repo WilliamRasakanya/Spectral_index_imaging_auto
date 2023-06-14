@@ -36,11 +36,18 @@ NB: Ensure that all the input images have the same angular sizes and the same sk
     ```
     $ cp path/to/fitsfile/file.fits .
     ```
- 5. Generate the bash submission files
+ 5. Write or copy the background (noise) region (DS9 format) to the current directory, with name noise.reg
+    ```
+    $ ln -s path/to/noisefile/noise.reg .
+    ```
+    OR
+    ```
+    $ cp path/to/noisefile/noise.reg .
+    ```
+ 6. Generate the bash submission files
     ```
     $ python automated_sh_generator_spix.py idia
     ```
- 6. Write or copy the background (noise) region (DS9 format or otherwise{untested}) to the current directory
  7. Submit the job:
     ``` 
     $ ./submit_spi_creation_job.sh

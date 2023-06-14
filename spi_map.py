@@ -30,7 +30,7 @@ g.write('imageloc')
 g.write('images')
 g.write('load')
 g.write('data')
-g.write('noise/noise.reg') # noise region
+g.write('noise.reg') # noise region
 g.write('txt_files/full_map.reg') # region file path (Default will use the full map)
 g.write('0.0474') # redshift of the source of interest
 g.write('specindexcalctype')

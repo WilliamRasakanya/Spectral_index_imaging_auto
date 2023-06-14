@@ -47,5 +47,5 @@ smoothedfiles = glob.glob('smoothed_*')
 # export casa im file to fits file
 
 for image in smoothedfiles:
-    exportfits(image, cwd + '/data/' + image + '.fits')
+    exportfits(image, cwd + '/data/' + image + '.fits', overwrite=True)
 

@@ -103,7 +103,7 @@ g.write('#SBATCH --cpus-per-task=8' + '\n')
 g.write('#SBATCH --mem=128GB' + '\n')
 g.write('SECONDS=0')
 g.write('\n echo "Submitting Slurm job -- Spectral index map creation using BRATS"')
-g.write('\n singularity exec /idia/software/containers/kern6.simg python3 ' + cwd + '/spi_map.py')
+g.write('\n singularity exec /idia/software/containers/kern6.simg python3 spi_map.py')
 g.write('\n echo "****ELAPSED "$SECONDS" SPImap"')
 g.close()
 

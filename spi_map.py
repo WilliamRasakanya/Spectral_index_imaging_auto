@@ -61,7 +61,7 @@ h.write('BRATS python logs to appear here. \n \n')
 spi_ = brats.Bind("/usr/bin/brats")
 
 # Run multiple files in series with execfile():
-spi_create = spi_.execfile("txt_files/spi_commands.txt")
+spi_create = spi_.execfile(TXT+"spi_commands.txt")
 #print(spi_create)
 h.write(f'{spi_}' + '\n') # Returns a dictionary {file : returncode}. Returns 0 on success, else returns an error code.
 

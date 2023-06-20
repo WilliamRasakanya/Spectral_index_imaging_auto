@@ -164,7 +164,7 @@ def main():
         g.write('# Region file format: DS9 version 4.1' + '\n')
         g.write('global color=green dashlist=8 3 width=1 font="helvetica 10 normal roman" select=1 highlite=1 dash=0 fixed=0 edit=1 move=1 delete=1 include=1 source=1' + '\n')
         g.write('physical' + '\n')
-        g.write(f'box({(nax1[minor_index])/2}, {(nax1[minor_index])/2}, {(nax1[minor_index] - 1)}, {(nax1[minor_index] - 1)}, 0)' + ' # color=#FFFFFF width=2 text={Full_image}') # The last paramenter in the box, the 0, represents the rotation angle. Change as appropriate.
+        g.write(f'box({(nax1[minor_index] - 1)/2}, {(nax1[minor_index] - 1)/2}, {(nax1[minor_index] - 1)}, {(nax1[minor_index] - 1)}, 0)' + ' # color=#FFFFFF width=2 text={Full_image}') # The last paramenter in the box, the 0, represents the rotation angle. Change as appropriate.
         g.close()
         
     h.close()    

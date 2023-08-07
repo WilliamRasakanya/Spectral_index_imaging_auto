@@ -18,39 +18,39 @@ NB: Ensure that all the input images have the same angular sizes and the same sk
  ## Quick start
  1. ssh into your machine or cluster, e.g.:
     ```
-    $ ssh username@slurm.clustername.ac.cc
+    ssh username@slurm.clustername.ac.cc
     ```
  2. Navigate to an empty, working area:
     ```
-    $ cd path/to/empty_folder
+    cd path/to/empty_folder
     ```
  3. Clone the root contents of this repo into it:
     ```
-    $ git clone https://github.com/WilliamRasakanya/Spectral_imaging_auto.git .
+    git clone https://github.com/WilliamRasakanya/Spectral_imaging_auto.git .
     ```
  4. Make a symlink to your .fits images or copy them to the current directory
     ```
-    $ ln -s path/to/fitsfile/file.fits .
+    ln -s path/to/fitsfile/file.fits .
     ```
     OR
     ```
-    $ cp path/to/fitsfile/file.fits .
+    cp path/to/fitsfile/file.fits .
     ```
  5. Write or copy the background (noise) region (DS9 format) to the current directory, with name noise.reg
     ```
-    $ ln -s path/to/noisefile/noise.reg .
+    ln -s path/to/noisefile/noise.reg .
     ```
     OR
     ```
-    $ cp path/to/noisefile/noise.reg .
+    cp path/to/noisefile/noise.reg .
     ```
  6. Generate the bash submission files
     ```
-    $ python automated_sh_generator_spix.py idia
+    python automated_sh_generator_spix.py idia
     ```
  7. Submit the job:
     ``` 
-    $ ./submit_spi_creation_job.sh
+    ./submit_spi_creation_job.sh
     ```
  
  

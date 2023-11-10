@@ -38,7 +38,7 @@ g.write('\n # Use python and astropy to find the right beam size from the list o
 g.write("\n BeamExt=`sbatch " + cwd + "/slurm_beamext.sh | awk '{print $4}' `")
 g.write('\n    ')
 g.write('\n # Use CASA to smooth the selected images')
-g.write("\n SMOOTH=`sbatch -d afterok:${BeamExt} " + cwd + "/slurm_casasmooth.sh | awk '{print $4}' `")
+g.write("\n SMOOTH=`sbatch -d afterok:${BeamExt} " + cwd + "/slurm_smooth_regrid.sh | awk '{print $4}' `")
 g.write('\n    ')
 g.write('\n # Use BRATS to create a spectral index map')
 g.write("\n SPImap=`sbatch -d afterok:${SMOOTH} " + cwd + "/slurm_spi.sh | awk '{print $4}' `")

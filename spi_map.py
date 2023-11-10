@@ -15,6 +15,9 @@
 
 import os, sys
 from os import path
+import glob
+import astropy
+from astropy.io import fits
 
 cwd = os.getcwd() # current working directory
 
@@ -72,3 +75,28 @@ h.write(f'{spi_}' + '\n') # Returns a dictionary {file : returncode}. Returns 0 
 # h.write(f'{runs_}') # Returns a dictionary {commandfilename : returncode}. Returns 0 on success, else returns an error code.
 
 h.close()
+
+# Fix the header file of the brats output images
+#### This fixes the coordinate space of the BRATS images so that they match the input images' coordinates
+
+brats_im = glob.glob('images/*')
+
+data_im = glob.glob('data/*')
+
+hdu_ = fits.open(data_im[0])
+header_ = hdu_[0].header
+header_['BUNIT'] = ''
+header_['OBSERVER'] = 'BRATS'
+header_['TELESCOP'] = 'BRATS'
+
+for image in brats_im:
+    im = fits.open(image)
+
+    data_ = im[0].data
+    
+    new_im = fits.PrimaryHDU(data = data_, header = header_)
+    new_im.writeto(image[0:-17] + '.fits', overwrite=True)
+
+    im.close()
+
+hdu_.close()

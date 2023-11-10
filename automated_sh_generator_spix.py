@@ -66,9 +66,9 @@ g.close()
 
 make_executable(submit_file_beamext)
 
-submit_file_casa = 'slurm_casasmooth.sh'
+submit_file_smooth = 'slurm_smooth_regrid.sh'
 
-g = open(submit_file_casa, 'w')
+g = open(submit_file_smooth, 'w')
 g.write('#!/usr/bin/bash' + '\n')
 g.write('\n')
 g.write('#SBATCH --job-name=SMOOTH' + '\n')
@@ -79,12 +79,12 @@ g.write('#SBATCH --nodes=1' + '\n')
 g.write('#SBATCH --cpus-per-task=8' + '\n')
 g.write('#SBATCH --mem=64GB' + '\n')
 g.write('SECONDS=0')
-g.write('\n echo "Submitting Slurm job -- Automated CASA smoothing"')
-g.write('\n singularity exec /idia/software/containers/casa-stable.img casa -c ' + cwd + '/casa_smoothing.py'+ ' --log2term --nogui')
+g.write('\n echo "Submitting Slurm job -- Automated image smoothing and regridding"')
+g.write('\n singularity exec /idia/software/containers/casa-stable.img casa -c ' + cwd + '/smooth_regrid.py'+ ' --log2term --nogui')
 g.write('\n echo "****ELAPSED "$SECONDS" SMOOTH"')
 g.close()
 
-make_executable(submit_file_casa) 
+make_executable(submit_file_smooth) 
 
 # From Jeremy Harwood GitHub
 # https://github.com/JeremyHarwood/bratswrapper

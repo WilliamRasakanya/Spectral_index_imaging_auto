@@ -95,7 +95,7 @@ for image in brats_im:
     data_ = im[0].data
     
     new_im = fits.PrimaryHDU(data = data_, header = header_)
-    new_im.writeto(image[0:-17] + '.fits', overwrite=True)
+    new_im.writeto(image[0:-18] + '.fits', overwrite=True)
 
     im.close()
 

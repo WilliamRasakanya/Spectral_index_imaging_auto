@@ -67,9 +67,9 @@ NB: Ensure that all the input images have the same angular sizes and the same sk
   
  * [`bratswrapper`](https://github.com/JeremyHarwood/bratswrapper): [@JeremyHarwood](https://github.com/JeremyHarwood)'s `Python` wrapper which allows for automation of the process.
  ---
-### Acknowledgemets
+#### Acknowledgemets
  
-* [@IsaacMagolego](https://github.com/IsaacMagolego) contributed to the portion of extracting the beam dimensions from the fits file and introduced me to BRATS.
+* [@IsaacMagolego](https://github.com/IsaacMagolego) contributed to the portion of extracting the beam dimensions from the fits file.
  ---
  
  More info might be added in the future as my skills improve.

@@ -36,13 +36,7 @@ import glob
 import shutil
 
 from astropy.io import fits
-from astropy.convolution import Gaussian2DKernel
-#from astropy.wcs import WCS
-#from astropy.coordinates import SkyCoord
-from scipy.signal import convolve as scipy_convolve
-from astropy.convolution import convolve
-from radio_beam import Beam, Beams
-import astropy.units as u
+
 
 #_____________________________________________________________________________
 

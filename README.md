@@ -46,7 +46,7 @@ NB: Ensure that all the input images have the same angular sizes and the same sk
     ```
  6. Generate the bash submission files
     ```
-    python automated_sh_generator_spix.py idia
+    python automated_sh_generator_spix.py
     ```
  7. Submit the job:
     ``` 

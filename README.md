@@ -28,6 +28,9 @@ NB: Ensure that all the input images have the same angular sizes and the same sk
     ```
     git clone https://github.com/WilliamRasakanya/Spectral_imaging_auto.git .
     ```
+    ```
+    git clone https://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@github.com/WilliamRasakanya/Spectral_imaging_auto.git .
+    ```
  4. Make a symlink to your .fits images or copy them to the current directory
     ```
     ln -s path/to/fitsfile/file.fits .

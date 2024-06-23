@@ -28,6 +28,7 @@ BINDPATH = '$PWD,'+CWD+','+BIND
 NODE_CONTAINER_PATH = [HOME+'/software/containers/']
 
 CASA = 'oxkat-0.41'
+BRATS = 'kern6.simg'
 
 # ------------------------------------------------------------------------
 
@@ -69,7 +70,7 @@ if machine == 'node' or None:
         g.write("python " + cwd + "/spec_index_z_absent.py \n")
     elif spi_method == 'brats':
         g.write('# Generate spectral index map using BRATS \n')
-        g.write('singularity exec /idia/software/containers/kern6.simg python3 spi_map.py ')
+        g.write('singularity exec '+ NODE_CONTAINER_PATH + BRATS + ' python3 spi_map.py ')
     g.close()
 
 elif machine == 'idia':

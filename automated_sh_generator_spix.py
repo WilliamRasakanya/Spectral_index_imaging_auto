@@ -23,7 +23,7 @@ HOME = os.path.expanduser('~')
 
 # Bind the symlinked location of the input image files.
 BIND = ''
-BINDPATH = '$PWD,'+CWD+','+BIND
+BINDPATH = '$PWD,'+cwd+','+BIND
 
 NODE_CONTAINER_PATH = [HOME+'/software/containers/']
 
@@ -34,7 +34,7 @@ BRATS = 'kern6.simg'
 
 # define how the method and machine to run the pipeline on
 
-def get_input(s):
+def get_input(s, default=None):
     try:
         i = sys.argv.index(s)
         return sys.argv[i+1]

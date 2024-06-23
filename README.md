@@ -48,7 +48,7 @@ NB: Ensure that all the input images have the same angular sizes and the same sk
     cp path/to/noisefile/noise.reg .
     ```
  6. Generate the bash submission files <br /> &emsp;
-     Specify the machine to run on and the method of spectran index generation: <br /> &emsp;
+     Specify the machine to run on and the method of spectran index generation: <br /> &emsp;&emsp;
      Machine: 'node'/None or 'ilifu'.    Method: 'manual'/None or 'brats'. 
     ```
     python automated_sh_generator_spix.py node brats

@@ -11,9 +11,9 @@ The [automated_sh_generator_spix.py](https://github.com/WilliamRasakanya/Spectra
   * The "slurm_smooth_regrid.sh" file will instruct the Common Astronomy Software Applications (`CASA`) package to smooth and regrid the required files to a resolution of an image with the largest beam size.
   * Finally, the "slurm_spi.sh" file will use the Broadband Radio Astronomy Tools (`BRATS`) software to create a spectral index map. Thereafter, a copy of the output image will be made, with its coordinates fixed to align with those of the input images.
 
-NB: Ensure that all the input images have the same angular sizes and the same sky coordinates, and that they are square-shaped.
-
 An alternative and flexible method to use is the 'manual' one, which uses a custom code and implements the definition of spectral index on a pixel-by-pixel basis. No  redshift info required.
+
+NB: Ensure that all the input images have the same angular sizes and the same sky coordinates, and that they are square-shaped (only for BRATS).
 
  ---
  

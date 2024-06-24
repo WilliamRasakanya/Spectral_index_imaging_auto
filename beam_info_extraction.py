@@ -178,7 +178,7 @@ def main():
 
     larger_minor = str(larger_minor) + 'arcsec'
     larger_major = str(larger_major) + 'arcsec'
-    larger_bpa = str(larger_bpa) + 'deg'
+    larger_bpa = str(larger_bpa)
     
     # Write a file that has BMIN, BMAJ etc info
     

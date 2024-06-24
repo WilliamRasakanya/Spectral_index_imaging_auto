@@ -27,7 +27,7 @@ BINDPATH = '$PWD,'+cwd+','+BIND
 
 NODE_CONTAINER_PATH = [HOME+'/software/containers/']
 
-CASA = 'oxkat-0.41'
+CASA = 'oxkat-0.41.sif'
 BRATS = 'kern6.simg'
 
 # ------------------------------------------------------------------------

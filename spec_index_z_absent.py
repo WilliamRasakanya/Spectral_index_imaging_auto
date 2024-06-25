@@ -25,6 +25,8 @@ RESULTS = cwd + '/results/'
 
 NOISE = cwd + '/noise/'
 
+IMAGES = cwd + '/images/
+
 try:
     os.system(f'mkdir {RESULTS}')
 except:
@@ -32,6 +34,11 @@ except:
 
 try:
     os.system(f'mkdir {NOISE}')
+except:
+    pass
+
+try:
+    os.system(f'mkdir {IMAGES}')
 except:
     pass
 
@@ -94,15 +101,15 @@ def process_image(image_filename, sigma=3.0, maxiters=10, nsigma=3.0, box_size=(
         # Save the mask to a new FITS file
         header_mask = hdul[0].header
         header_mask['BUNIT'] = ''
-        mask_filename = RESULTS+f'{image_filename[:-5]}-residual-mask-thres_{nsigma}sigma.fits'
+        mask_filename = f'{os.path.basename(image_filename)[:-5]}-residual-mask-thres_{nsigma}sigma.fits'
         hdu_mask = fits.PrimaryHDU(data=mask.astype(float), header=header_mask)
         hdu_mask.writeto(NOISE + mask_filename, overwrite=True)
 
-        noise_filename = f'{image_filename[:-5]}-residual-thres_{nsigma}sigma.fits'
+        noise_filename = f'{os.path.basename(image_filename)[:-5]}-residual-thres_{nsigma}sigma.fits'
         hdu = fits.PrimaryHDU(data=noise_image, header=header_)
         hdu.writeto(NOISE + noise_filename, overwrite=True)
 
-        with open(RESULTS+f'stats{noise_filename[3:-5]}.txt', 'w') as f:
+        with open(RESULTS+f'stats-{os.path.basename(image_filename)}.txt', 'w') as f:
             f.write(f'Image statistics of the source-subtracted image {noise_filename} \n \n')
             f.write(f'mean: {mean} \n')
             f.write(f'median: {median} \n')
@@ -158,38 +165,40 @@ def main():
 
     std_dev = process_image(DATA+ exclude_im)
 
-
-    spi_data = np.empty([len(im_data[0][:,0]),len(im_data[0][0,:])])
+    # Initialize spi_data with np.nan values
+    spi_data = np.full_like(im_data[0], np.nan, dtype=np.float64)
 
     for j in range(0, len(im_data[0][:,0])): # dec
         for k in range(0, len(im_data[0][0,:])): # ra
-
-            log_s = []
-
-            log_v = []
-
-            for l in range(0, len(im_data)):
-
-                if im_data[l][j,k] >= 3 * max(std_dev): # 3 sigma threshold
-                    x = np.log10(im_data[l][j,k])
-
-                    log_v.append(np.log10(freq[l]))
-
-                    log_s.append(x)
-
+            try:
+                log_s = []
+    
+                log_v = []
+    
+                for l in range(0, len(im_data)):
+    
+                    if im_data[l][j,k] >= 3 * max(std_dev): # 3 sigma threshold
+                        x = np.log10(im_data[l][j,k])
+    
+                        log_v.append(np.log10(freq[l]))
+    
+                        log_s.append(x)
+    
+    
+                if len(log_s) > 1:
+    
+                    # best fit to the data
+                    a, b = np.polyfit(log_v, log_s, 1)
+    
+                    spi_data[j,k] = a #append the best-fit line gradient to the spi map array
+    
                 else:
-                    continue
-
-            if len(log_s) > 1:
-
-                # best fit to the data
-                a, b = np.polyfit(log_v, log_s, 1)
-
-                spi_data[j,k] = a #append the best-fit line gradient to the spi map array
-
-            else:
-                spi_data[l,k] = np.nan # if flux is too low and does not meat minimum requirements, record spec index as nan
-
+                    spi_data[j,k] = np.nan # if flux is too low and does not meat minimum requirements, record spec index as nan
+            
+            except IndexError:
+                continue
+    
+    
     spi_header = images[0][0].header
     spi_header['BUNIT'] = ''
 
@@ -200,13 +209,13 @@ def main():
 
     try:
         del spi_header['OBSERVER']
-    except:
+    except KeyError:
         pass
 
     field_name = spi_header['OBJECT']
 
     spi_image = fits.PrimaryHDU(data=spi_data, header=spi_header)
-    spi_image.writeto(f'{DATA}{field_name}_manual_spi.fits', overwrite=True)
+    spi_image.writeto(f'{IMAGES}{field_name}_manual_spi.fits', overwrite=True)
 
 
 if __name__ == "__main__":

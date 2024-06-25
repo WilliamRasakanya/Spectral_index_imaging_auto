@@ -59,7 +59,7 @@ def make_executable(infile):
 
 submit_file = 'submit_spi_creation_job.sh'
 
-g = open(submit_spi_z_absent, 'w')
+g = open(submit_file, 'w')
 g.write('#!/usr/bin/bash' +'\n\n')
 g.write('# Use python and astropy to find the right beam size from the list of images \n')
 g.write("python " + cwd + "/beam_info_extraction.py \n\n")

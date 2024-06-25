@@ -177,7 +177,7 @@ def main():
     
                 for l in range(0, len(im_data)):
     
-                    if im_data[l][j,k] >= 3 * max(std_dev): # 3 sigma threshold
+                    if im_data[l][j,k] >= 3 * (std_dev): # 3 sigma threshold
                         x = np.log10(im_data[l][j,k])
     
                         log_v.append(np.log10(freq[l]))

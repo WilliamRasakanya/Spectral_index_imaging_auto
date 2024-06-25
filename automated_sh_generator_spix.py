@@ -64,7 +64,7 @@ g.write('#!/usr/bin/bash' +'\n\n')
 g.write('# Use python and astropy to find the right beam size from the list of images \n')
 g.write("python " + cwd + "/beam_info_extraction.py \n\n")
 g.write('# Use CASA to smooth the selected images \n')
-g.write("singularity exec " + NODE_CONTAINER_PATH + CASA + " casa -c  " + cwd + "/smooth_regrid.py --log2term --nogui  \n\n")
+g.write("singularity exec " + NODE_CONTAINER_PATH + CASA + " casa -c " + cwd + "/smooth_regrid.py --log2term --nogui  \n\n")
 #if spi_method == 'manual' or None:
 g.write('# Generate spectral index map using custom code \n')
 g.write("python " + cwd + "/spec_index_z_absent.py \n")

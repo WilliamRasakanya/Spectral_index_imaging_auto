@@ -25,7 +25,7 @@ RESULTS = cwd + '/results/'
 
 NOISE = cwd + '/noise/'
 
-IMAGES = cwd + '/images/
+IMAGES = cwd + '/images/'
 
 try:
     os.system(f'mkdir {RESULTS}')

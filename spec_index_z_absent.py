@@ -131,7 +131,7 @@ def process_image(image_filename, sigma=3.0, maxiters=10, nsigma=3.0, box_size=(
 
 def main():
 
-    files = glob.glob(DATA + '*.fits')
+    files = sorted(glob.glob(DATA + '*.fits'))
 
     images = []
     freq = []
@@ -199,7 +199,7 @@ def main():
                 continue
     
     
-    spi_header = fits.open(images[0])[0].header
+    spi_header = fits.open(files[0])[0].header
     spi_header['BUNIT'] = ''
 
     keys_to_remove = [key for key in spi_header.keys() if key.endswith('3') or key.endswith('4')]

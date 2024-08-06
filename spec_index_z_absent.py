@@ -199,7 +199,7 @@ def main():
                 continue
     
     
-    spi_header = images[0][0].header
+    spi_header = fits.open(images[0])[0].header
     spi_header['BUNIT'] = ''
 
     keys_to_remove = [key for key in spi_header.keys() if key.endswith('3') or key.endswith('4')]

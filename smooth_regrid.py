@@ -51,7 +51,7 @@ def smooth(image):
                 major = larger_major,
                 minor = larger_minor,
                 pa = larger_bpa,
-                #targetres=True,
+                targetres=True,
                 overwrite=True,
                 outfile = CASA_out + 'smoothed_' + image[12:])
 

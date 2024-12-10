@@ -42,7 +42,7 @@ def get_input(s, default=None):
         return None
 
 # machine = get_input(1, "node") # Work in progress
-machine = 'node' # Change this to 'ilifu' if you want ilifu-type bash submission on a slurm scheduler
+machine = 'node' # Change this to 'idia' if you want ilifu-type bash submission on a slurm scheduler
 spi_method = get_input(2, 'manual') # Change this to 'brats' if you want to use brats.
 
 # ------------------------------------------------------------------------
@@ -69,7 +69,7 @@ g.write("singularity exec " + NODE_CONTAINER_PATH + CASA + " casa -c " + cwd + "
 if spi_method == 'manual' or None:
 g.write('# Generate spectral index map using custom code \n')
 g.write("python " + cwd + "/spec_index_z_absent.py \n")
- elif spi_method == 'brats':
+elif spi_method == 'brats':
      g.write('# Generate spectral index map using BRATS \n')
      g.write('singularity exec '+ NODE_CONTAINER_PATH + BRATS + ' python3 spi_map.py ')
 g.close()

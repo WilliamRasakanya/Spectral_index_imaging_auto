@@ -32,6 +32,14 @@ BRATS = 'kern6.simg'
 
 # ------------------------------------------------------------------------
 
+def make_executable(infile):
+
+    # https://stackoverflow.com/questions/12791997/how-do-you-do-a-simple-chmod-x-from-within-python
+
+    mode = os.stat(infile).st_mode
+    mode |= (mode & 0o444) >> 2
+    os.chmod(infile, mode)  
+
 # define how the method and machine to run the pipeline on
 
 def get_input(s, default=None):
@@ -43,17 +51,9 @@ def get_input(s, default=None):
 
 # machine = get_input(1, "node") # Work in progress
 machine = 'node' # Change this to 'idia' if you want ilifu-type bash submission on a slurm scheduler
-spi_method = get_input(2, 'manual') # Change this to 'brats' if you want to use brats. You will need to edit the spi_map.py file for redshift, and will need a noise ds9 region file
+spi_method = 'manual' # Change this to 'brats' if you want to use brats. You will need to edit the spi_map.py file for redshift, and will need a noise ds9 region file
 
-# ------------------------------------------------------------------------
-
-def make_executable(infile):
-
-    # https://stackoverflow.com/questions/12791997/how-do-you-do-a-simple-chmod-x-from-within-python
-
-    mode = os.stat(infile).st_mode
-    mode |= (mode & 0o444) >> 2
-    os.chmod(infile, mode)    
+# ------------------------------------------------------------------------  
 
     
 if machine == 'node' or None: 

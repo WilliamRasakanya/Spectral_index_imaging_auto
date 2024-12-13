@@ -50,7 +50,7 @@ NB: Ensure that all the input images have the same angular sizes and the same sk
      Specify the machine to run on and the method of spectran index generation: <br /> &emsp;&emsp;
      Machine: 'node'/None or 'idia'.    Method: 'manual'/None or 'brats'. 
     ```
-    python automated_sh_generator_spix.py node brats
+    python automated_sh_generator_spix.py
     ```
  8. Submit the job:
     ``` 

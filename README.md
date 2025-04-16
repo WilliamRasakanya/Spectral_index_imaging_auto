@@ -67,7 +67,7 @@ NB: Ensure that all the input images have the same angular sizes and the same sk
  * [`CASA`](https://casa.nrao.edu/): To smooth the images to the resolution of the image with the largest beam size.
    * Reference: [McMullin et al., 2007](https://ui.adsabs.harvard.edu/abs/2007ASPC..376..127M/abstract)
  
- * [`BRATS`](http://www.askanastronomer.co.uk/brats/): To create radio spectral index maps.
+ * [`BRATS`](http://www.askanastronomer.co.uk/brats/): To create radio spectral index maps (and various others, eg. Spectral Age maps).
    * Reference: [Harwood et al., 2013, MNRAS, 435, 3353](http://mnras.oxfordjournals.org/content/435/4/3353); [Harwood et al., 2015, MNRAS, 454, 3403](http://mnras.oxfordjournals.org/content/454/4/3403)
   
  * [`bratswrapper`](https://github.com/JeremyHarwood/bratswrapper): [@JeremyHarwood](https://github.com/JeremyHarwood)'s `Python` wrapper which allows for automation of the process.

@@ -10,7 +10,7 @@ The [automated_sh_generator.py](https://github.com/WilliamRasakanya/Spectral_ima
   * The "slurm_beamext.sh" file is linked in the main submission file and it contains the instructions for the image beam info extraction and creates a _physical_ full map region file. If no noise.reg file is in main folder, [noise_calc.py](noise_calc.py) will generate a noise.reg region file automatically.
   * The "slurm_smooth_regrid.sh" file will instruct the Common Astronomy Software Applications (`CASA`) package to smooth and regrid the required files to a resolution of an image with the largest beam size.
   * Finally, the "slurm_spi.sh" file will use the Broadband Radio Astronomy Tools (`BRATS`) software to create a spectral index map. Thereafter, a copy of the output image will be made, with its coordinates fixed to align with those of the input images.
-  * [spi_commands.txt](spi_commands.txt) conatins BRATS commands in the regired order ([BRATS cookbook](https://askanastronomer.co.uk/brats/downloads/bratscookbook.pdf)). Modify as needed. Additional BRATS commands can be added.
+  * [spi_commands.txt](spi_commands.txt) contains BRATS commands in the regired order ([BRATS cookbook](https://askanastronomer.co.uk/brats/downloads/bratscookbook.pdf)). Modify as needed. Additional BRATS commands can be added.
 
 An alternative and flexible method to use is the 'manual' one, which uses a custom python code and implements the definition of spectral index on a pixel-by-pixel basis. No  redshift info required.
 

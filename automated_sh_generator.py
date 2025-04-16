@@ -32,7 +32,7 @@ def make_executable(infile):
     os.chmod(infile, mode)  
 
 parser = argparse.ArgumentParser(description="Generate shell scripts for different platforms and methods")
-parser.add_argument("platform", choices=["slurm", "node", "idia"], help="Target platform type")
+parser.add_argument("platform", choices=["slurm", "node", "idia"], default="node", help="Target platform type")
 parser.add_argument("method", nargs="?", default="brats", help="Execution method (e.g., brats, manual -- python)")
 
 args = parser.parse_args()

@@ -36,7 +36,7 @@ SLURM_CONTAINER_PATH = HOME+'/containers/'
 NODE_CONTAINER_PATH = HOME+'/software/containers/'
 
 # Container names.
-ASTROPY_PATTERN = 'ASTRO-PY3.simg' # Can change this to any container with astropy installed.
+ASTROPY_PATTERN = 'ASTRO-PY3.10.sif' # Can change this to any container with astropy installed.
 CASA_PATTERN = 'casa-stable.img' # Can change this to any CASA container you need to use.
 BRATS_PATTERN = 'kern6.simg'
 

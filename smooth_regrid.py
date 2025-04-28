@@ -46,7 +46,7 @@ def import_im(image):
 
 # image regridding
 
-REGRID = False # set to True if you want to skip regridding and/or it causes errors.and
+REGRID = False # set to True for regridding. Leave False if there are regridding issues.
 
 def regrid(image):
     # regrid other images wrt a reference image

@@ -34,9 +34,9 @@ wcs = WCS(header)
 wcs = wcs.celestial # extract 2D world coordinates
 data = fits.getdata(image_file)
 
-if len(data) == 4:
+if len(data.shape) == 4:
     data = data[0,0,:,:]
-elif len(data) == 3:
+elif len(data.shape) == 3:
     data = data[0,:,:]
 else:
     data = data

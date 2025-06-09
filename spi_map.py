@@ -46,12 +46,9 @@ h.close()
 brats_im = sorted(glob.glob('images/*'))
 
 # reference fits file
-f = open(TXT + 'exclude_im.txt') 
-fline = f.readlines()
-exclude_im = fline[0]
-f.close()
+ref_fits_file = glob.glob('*fits')[0]
 
-header = fits.getheader(exclude_im)
+header = fits.getheader(ref_fits_file)
 
 crval1 = header['CRVAL1']
 crval2 = header['CRVAL2']

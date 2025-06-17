@@ -64,6 +64,7 @@ for image in brats_im:
     header_['CRVAL2'] = crval2
     header_['CDELT1'] = cdelt1
     header_['CDELT2'] = cdelt2
+    header_['CTYPE2'] = 'DEC--SIN' # Fix from BRATS naming CTYPE2 = DEC---SIN
 
     new_im = fits.PrimaryHDU(data = data_, header = header_)
     new_im.writeto(image, overwrite=True)
